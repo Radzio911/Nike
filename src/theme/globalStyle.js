@@ -5,4 +5,13 @@ export const GlobalStyle = createGlobalStyle`
         margin: 0;
         font-family: sans-serif;
     }
+    *{
+        font-family: 'Blinker', sans-serif;
+    }
+    input, button, select, textarea, option{
+        font-family: 'Blinker', sans-serif;
+    }
+    a{
+        color: black;
+    }
 `;

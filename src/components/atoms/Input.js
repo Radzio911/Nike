@@ -10,7 +10,7 @@ const StyledInput = styled.input`
   outline: none;
 `;
 
-export const Input = ({ placeHolder, value, setValue }) => {
+export const Input = ({ placeHolder, value = "", setValue = () => {} }) => {
   const handleChange = (event) => {
     setValue(event.target.value);
   };

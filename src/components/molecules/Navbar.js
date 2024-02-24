@@ -29,23 +29,32 @@ const StyledLinks = styled.div`
   }
 `;
 
+const StyledRightSide = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 20px;
+`;
+
 export const Navbar = () => {
+  const [searchQuery, setSearchQuery] = React.useState("");
   return (
     <StyledNav>
       <StyledNikeIcon src={NikeIcon} alt="nike icon" />
       <StyledLinks>
-        <Link to={"#"}>Nowości</Link>
+        <Link to={"/news/"}>Nowości</Link>
         <Link to={"#"}>Męzcyzni</Link>
         <Link to={"#"}>Kobiety</Link>
         <Link to={"#"}>Dzieci</Link>
       </StyledLinks>
-      <div>
-        <Input placeHolder={"Wyszukaj"} />
-        <div>
-          <FiHeart />
-          <FiShoppingCart />
-        </div>
-      </div>
+      <StyledRightSide>
+        <Input
+          value={searchQuery}
+          setValue={setSearchQuery}
+          placeHolder={"Wyszukaj"}
+        />
+        <FiHeart />
+        <FiShoppingCart />
+      </StyledRightSide>
     </StyledNav>
   );
 };
