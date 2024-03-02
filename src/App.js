@@ -6,6 +6,7 @@ import { Page404 } from "./pages/Page404";
 import { GlobalStyle } from "./theme/globalStyle";
 import { NewsPage } from "./pages/NewsPage";
 import { ThemeContext } from "styled-components";
+
 export const LanguageContext = React.createContext("pl");
 
 export const OwnThemeContext = React.createContext();

@@ -7,6 +7,8 @@ export const GlobalStyle = createGlobalStyle`
     }
     *{
         font-family: 'Blinker', sans-serif;
+        box-sizing: border-box;
+        margin: 0;
     }
     input, button, select, textarea, option{
         font-family: 'Blinker', sans-serif;

@@ -2,7 +2,8 @@ import React from "react";
 import styled from "styled-components";
 
 const StyledButton = styled.button`
-  background-color: ${({ primary }) => (primary ? "black" : "white")};
+  background-color: ${({ primary, color }) =>
+    color ? color : primary ? "black" : "white"};
   color: ${({ primary }) => (primary ? "white" : "black")};
   font-size: 20px;
   padding: 10px;
@@ -12,9 +13,9 @@ const StyledButton = styled.button`
   cursor: pointer;
 `;
 
-export const Button = ({ children, primary = true, ...props }) => {
+export const Button = ({ children, primary = true, color, ...props }) => {
   return (
-    <StyledButton primary={primary} {...props}>
+    <StyledButton color={color} primary={primary} {...props}>
       {children}
     </StyledButton>
   );
