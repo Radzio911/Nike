@@ -20,13 +20,16 @@ const StyledColumn = styled.div`
     font-size: 24px;
     text-decoration: none;
   }
+  .sublink {
+    font-size: 18px;
+    font-weight: 300;
+  }
 `;
 
 const StyledLeft = styled.div`
   display: flex;
   flex-direction: row;
   gap: 40px;
-
 
   align-items: center;
   justify-content: flex-start;
@@ -44,19 +47,33 @@ export const Footer = () => {
       <StyledLeft>
         <StyledColumn>
           <Link to={"#"}>Znajdź Sklep</Link>
-          <Link to={"#"}>PRZEŚLIJ OPINIE</Link>
-          <Link to={"#"}>KODY PODARUNKOWE</Link>
+          <Link className="sublink" to={"#"}>
+            PRZEŚLIJ OPINIE
+          </Link>
+          <Link className="sublink" to={"#"}>
+            KODY PODARUNKOWE
+          </Link>
         </StyledColumn>
         <StyledColumn>
           <Link to={"#"}>POMOC</Link>
-          <Link to={"#"}>Status zamówienia</Link>
-          <Link to={"#"}>Wysyłka i Dostawa</Link>
-          <Link to={"#"}>Kontakt</Link>
+          <Link className="sublink" to={"#"}>
+            Status zamówienia
+          </Link>
+          <Link className="sublink" to={"#"}>
+            Wysyłka i Dostawa
+          </Link>
+          <Link className="sublink" to={"#"}>
+            Kontakt
+          </Link>
         </StyledColumn>
         <StyledColumn>
           <Link to={"#"}>O NIKE</Link>
-          <Link to={"#"}>Aktualoności</Link>
-          <Link to={"#"}>Kariera</Link>
+          <Link className="sublink" to={"#"}>
+            Aktualoności
+          </Link>
+          <Link className="sublink" to={"#"}>
+            Kariera
+          </Link>
         </StyledColumn>
       </StyledLeft>
       <StyledRight>

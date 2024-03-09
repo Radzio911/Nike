@@ -43,25 +43,23 @@ const StyledSizeGrid = styled.div`
   }
 `;
 
-export const ProductInformations = () => {
+export const ProductInformations = ({ productData }) => {
   const [selectedSize, setSelectedSize] = React.useState();
-  const [selectedColor, setSelectedColor] = React.useState("white");
-  const [sizes, setSizes] = React.useState([39, 40, 41, 42, 43, 44]);
+  const [selectedColor, setSelectedColor] = React.useState(null);
   const navigate = useNavigate();
   return (
     <StyledWrapper>
-      <h1>Nike Air Presto - {selectedColor.toUpperCase()}</h1>
-      <h2>Buty męskie</h2>
-      <h2>349 PLN</h2>
+      <h1>{productData.title}</h1>
+      <h2>{productData.price} PLN</h2>
       <StyledColors>
-        <Button onClick={() => setSelectedColor("white")} color={"white"} />
-        <Button onClick={() => setSelectedColor("black")} color={"black"} />
-        <Button onClick={() => setSelectedColor("blue")} color={"#1DAEFF"} />
+        {productData.colors.map((color) => (
+          <Button onClick={() => setSelectedColor(color)} color={color} />
+        ))}
       </StyledColors>
       <StyledSize>
         <span>Wybierz rozmiar</span>
         <StyledSizeGrid>
-          {sizes.map((size) => (
+          {productData.sizes.map((size) => (
             <Button
               onClick={() => setSelectedSize(size)}
               primary={selectedSize === size}
@@ -82,11 +80,7 @@ export const ProductInformations = () => {
       <Button primary={false}>
         Ulubione <FaRegHeart />
       </Button>
-      <span>
-        Buty Nike Air Presto o eleganckim fasonie wygodniejszym nawet niż Twoja
-        ulubiona koszulka nadają stylowy i dynamiczny wygląd. Załóż je, a nigdy
-        nie zechcesz ich zdjąć.
-      </span>
+      <span>{productData.description}</span>
     </StyledWrapper>
   );
 };

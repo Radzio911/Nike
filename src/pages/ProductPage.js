@@ -3,6 +3,9 @@ import { MainTemplate } from "../templates/MainTemplate";
 import styled from "styled-components";
 import { ImageSlider } from "../components/molecules/ImageSlider";
 import { ProductInformations } from "../components/molecules/ProductImformations";
+import React from "react";
+import axios from "axios";
+import { API_URL } from "../api";
 
 const StyledWrapper = styled.article`
   display: flex;
@@ -14,11 +17,19 @@ const StyledWrapper = styled.article`
 
 export const ProductPage = () => {
   const { id } = useParams();
+  const [productData, setProductData] = React.useState(null);
+
+  React.useEffect(() => {
+    axios.get(API_URL + "/get_product/?id=" + id).then((data) => {
+      setProductData(data.data.product);
+    });
+  }, []);
+
   return (
     <MainTemplate>
       <StyledWrapper>
         <ImageSlider />
-        <ProductInformations />
+        {productData && <ProductInformations productData={productData} />}
       </StyledWrapper>
     </MainTemplate>
   );

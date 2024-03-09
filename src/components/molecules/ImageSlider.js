@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import image1 from "../../assets/img1.png";
+import { API_URL } from "../../api";
 
 const StyledWrapper = styled.div`
   display: flex;
@@ -24,10 +25,10 @@ const StyledWrapper = styled.div`
 
 const StyledImage = styled.img``;
 
-export const ImageSlider = () => {
+export const ImageSlider = ({ productId }) => {
   return (
     <StyledWrapper>
-      <StyledImage src={image1} alt={""} />
+      <StyledImage src={API_URL + "/image/?id=" + productId} alt={""} />
       <div>
         <StyledImage src={image1} alt={""} />
         <StyledImage src={image1} alt={""} />
