@@ -18,6 +18,7 @@ const StyledColumn = styled.div`
   a {
     color: white;
     font-size: 24px;
+    text-decoration: none;
   }
 `;
 
@@ -25,6 +26,7 @@ const StyledLeft = styled.div`
   display: flex;
   flex-direction: row;
   gap: 40px;
+
 
   align-items: center;
   justify-content: flex-start;
@@ -41,19 +43,20 @@ export const Footer = () => {
     <StyledFooter>
       <StyledLeft>
         <StyledColumn>
-          <Link to={"#"}>.....</Link>
-          <Link to={"#"}>.....</Link>
-          <Link to={"#"}>.....</Link>
+          <Link to={"#"}>Znajdź Sklep</Link>
+          <Link to={"#"}>PRZEŚLIJ OPINIE</Link>
+          <Link to={"#"}>KODY PODARUNKOWE</Link>
         </StyledColumn>
         <StyledColumn>
-          <Link to={"#"}>.....</Link>
-          <Link to={"#"}>.....</Link>
-          <Link to={"#"}>.....</Link>
+          <Link to={"#"}>POMOC</Link>
+          <Link to={"#"}>Status zamówienia</Link>
+          <Link to={"#"}>Wysyłka i Dostawa</Link>
+          <Link to={"#"}>Kontakt</Link>
         </StyledColumn>
         <StyledColumn>
-          <Link to={"#"}>.....</Link>
-          <Link to={"#"}>.....</Link>
-          <Link to={"#"}>.....</Link>
+          <Link to={"#"}>O NIKE</Link>
+          <Link to={"#"}>Aktualoności</Link>
+          <Link to={"#"}>Kariera</Link>
         </StyledColumn>
       </StyledLeft>
       <StyledRight>
