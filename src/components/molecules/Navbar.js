@@ -42,7 +42,7 @@ export const Navbar = () => {
       <StyledNikeIcon src={NikeIcon} alt="nike icon" />
       <StyledLinks>
         <Link to={"/news/"}>Nowości</Link>
-        <Link to={"#"}>Męzcyzni</Link>
+        <Link to={"#"}>Mężczyzni</Link>
         <Link to={"#"}>Kobiety</Link>
         <Link to={"#"}>Dzieci</Link>
       </StyledLinks>
