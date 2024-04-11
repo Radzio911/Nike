@@ -4,35 +4,47 @@ import { sequelize } from "./db.js";
 import { UserRouter } from "./routers/UserRouter.js";
 import { ProductRouter } from "./routers/ProductRouter.js";
 import cors from "cors";
-import cookieSession from "cookie-session";
+import session from "express-session";
+import bodyParser from "body-parser";
+import cookieParser from "cookie-parser";
+import fileUpload from "express-fileupload";
 
 dotenv.config();
-
-console.log();
 
 const app = express();
 
 sequelize.sync().then(() => {
-  console.log("Db is ready");
+	console.log("DATABASE IS READY");
 });
 
 app.use(
-  cookieSession({
-    name: "session",
-    keys: [process.env.SESSION_KEY],
-  })
+	cors({
+		origin: "http://localhost:3000",
+		credentials: true,
+	})
 );
 
+app.use(cookieParser());
+
+app.use(bodyParser.json());
+
 app.use(
-  cors({
-    origin: "*",
-    credentials: true,
-  })
+	session({
+		secret: "Some secret key",
+		resave: false,
+		saveUninitialized: false,
+		cookie: {
+			secure: true,
+			maxAge: 1000 * 60 * 60 * 24,
+		},
+	})
 );
+
+app.use(fileUpload({ limits: { fileSize: 50 * 1024 * 1024 } }));
 
 app.use("/users/", UserRouter);
 app.use("/products/", ProductRouter);
 
 app.listen(process.env.PORT, () => {
-  console.log("SERVER START");
+	console.log("SERVER START");
 });
