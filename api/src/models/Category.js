@@ -1,23 +1,28 @@
-import { Model, DataTypes } from "sequelize";
-
+import { DataTypes } from "sequelize";
 import { sequelize } from "../db.js";
-import Product from "./Product.js";
 
-class Category extends Model {}
+export const Category = sequelize.define("Category", {
+	name: DataTypes.STRING,
+});
 
-Category.init(
-	{
-		name: {
-			type: DataTypes.STRING,
-			allowNull: false,
-		},
-	},
-	{
-		sequelize,
-		modelName: "category",
-	}
-);
+// import { Model, DataTypes } from "sequelize";
 
-Category.hasMany(Product);
+// import { sequelize } from "../db.js";
+// import Product from "./Product.js";
 
-export default Category;
+// class Category extends Model {}
+
+// Category.init(
+// 	{
+// 		name: {
+// 			type: DataTypes.STRING,
+// 			allowNull: false,
+// 		},
+// 	},
+// 	{
+// 		sequelize,
+// 		modelName: "category",
+// 	}
+// );
+
+// export default Category;

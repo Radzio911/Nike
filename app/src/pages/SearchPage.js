@@ -1,10 +1,9 @@
-import { Link, useSearchParams } from "react-router-dom";
+import { useSearchParams } from "react-router-dom";
 import { MainTemplate } from "../templates/MainTemplate";
 import React from "react";
-import axios from "axios";
-import { API_URL } from "../api";
 import styled from "styled-components";
 import { Product } from "../components/molecules/Product";
+import { fetcher } from "../api";
 
 const StyledColumn = styled.div`
 	display: flex;
@@ -26,8 +25,8 @@ export const SearchPage = () => {
 	const [products, setProducts] = React.useState([]);
 
 	React.useEffect(() => {
-		axios
-			.get(API_URL + `/products/search?query=${searchParams.get("query")}`)
+		fetcher
+			.get(`/products/search?query=${searchParams.get("query")}`)
 			.then((data) => {
 				setProducts(data.data.products);
 			});

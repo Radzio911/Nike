@@ -1,30 +1,40 @@
-import { Model, DataTypes } from "sequelize";
-
+import { DataTypes } from "sequelize";
 import { sequelize } from "../db.js";
 
-class User extends Model {}
+export const User = sequelize.define("User", {
+	username: DataTypes.STRING,
+	password: DataTypes.STRING,
+	firstName: DataTypes.STRING,
+	email: DataTypes.STRING,
+});
 
-User.init(
-  {
-    username: {
-      type: DataTypes.STRING,
-      allowNull: false,
-    },
-    password: {
-      type: DataTypes.STRING,
-    },
-    firstName: {
-      type: DataTypes.STRING,
-      allowNull: true,
-    },
-    email: {
-      type: DataTypes.STRING,
-    },
-  },
-  {
-    sequelize,
-    modelName: "user",
-  }
-);
+// import { Model, DataTypes } from "sequelize";
 
-export default User;
+// import { sequelize } from "../db.js";
+
+// class User extends Model {}
+
+// User.init(
+//   {
+//     username: {
+//       type: DataTypes.STRING,
+//       allowNull: false,
+//     },
+//     password: {
+//       type: DataTypes.STRING,
+//     },
+//     firstName: {
+//       type: DataTypes.STRING,
+//       allowNull: true,
+//     },
+//     email: {
+//       type: DataTypes.STRING,
+//     },
+//   },
+//   {
+//     sequelize,
+//     modelName: "user",
+//   }
+// );
+
+// export default User;

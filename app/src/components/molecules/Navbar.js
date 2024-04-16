@@ -5,13 +5,18 @@ import { Link, useNavigate } from "react-router-dom";
 import { Input } from "../atoms/Input";
 import { FiHeart } from "react-icons/fi";
 import { FiShoppingCart } from "react-icons/fi";
+import { ROUTES } from "../../routes";
 
 const StyledNav = styled.nav`
-	background-color: #d7d7d7;
+	transition: background-color 0.3s;
+	background-color: ${({ $navOnTop }) => ($navOnTop ? "#eeeeee" : "#d7d7d7")};
 	display: flex;
 	flex-direction: row;
 	align-items: center;
 	justify-content: space-evenly;
+	position: sticky;
+	top: 0;
+	width: 100%;
 `;
 
 const StyledNikeIcon = styled.img`
@@ -38,6 +43,8 @@ const StyledRightSide = styled.div`
 export const Navbar = () => {
 	const [searchQuery, setSearchQuery] = React.useState("");
 	const navigate = useNavigate();
+	const navRef = React.useRef();
+	const [navOnTop, setNavOnTop] = React.useState(true);
 
 	const handleKeyDown = (event) => {
 		if (event.key === "Enter") {
@@ -45,18 +52,29 @@ export const Navbar = () => {
 		}
 	};
 
+	React.useEffect(() => {
+		const onScroll = (event) => {
+			setNavOnTop(window.scrollY === 0);
+		};
+
+		window.addEventListener("scroll", onScroll);
+		return () => {
+			window.removeEventListener("scroll", onScroll);
+		};
+	}, []);
+
 	return (
-		<StyledNav>
+		<StyledNav ref={navRef} $navOnTop={navOnTop}>
 			<StyledNikeIcon
 				onClick={() => navigate("/")}
 				src={NikeIcon}
 				alt="nike icon"
 			/>
 			<StyledLinks>
-				<Link to={"/news/"}>Nowości</Link>
-				<Link to={"#"}>Mężczyzni</Link>
-				<Link to={"#"}>Kobiety</Link>
-				<Link to={"#"}>Dzieci</Link>
+				<Link to={ROUTES.news.link()}>Nowości</Link>
+				<Link to={ROUTES.men.link()}>Mężczyzni</Link>
+				<Link to={ROUTES.women.link()}>Kobiety</Link>
+				<Link to={ROUTES.childs.link()}>Dzieci</Link>
 			</StyledLinks>
 			<StyledRightSide>
 				<Input

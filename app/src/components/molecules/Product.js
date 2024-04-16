@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { API, API_URL } from "../../api";
+import { API } from "../../api";
 
 const StyledWrapper = styled.div`
 	background-color: #eeeeee;
@@ -26,7 +26,7 @@ export const Product = ({ product }) => {
 	return (
 		<StyledWrapper>
 			<StyledImage
-				src={API("products", "image") + "?id=" + product.id}
+				src={API(["products", "image"]) + "?id=" + product.id}
 				alt={product.title}
 			/>
 			<span>{product.title}</span>

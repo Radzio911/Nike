@@ -1,13 +1,7 @@
 import React from "react";
-import { BrowserRouter, Link, Route, Routes } from "react-router-dom";
-import { IndexPage } from "./pages/IndexPage";
-import { ProductPage } from "./pages/ProductPage";
-import { Page404 } from "./pages/Page404";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { GlobalStyle } from "./theme/globalStyle";
-import { NewsPage } from "./pages/NewsPage";
 import { ThemeContext } from "styled-components";
-import { SearchPage } from "./pages/SearchPage";
-import { CreateProductPage } from "./pages/CreateProductPage";
 import { ROUTES } from "./routes";
 
 export const LanguageContext = React.createContext("pl");
